@@ -15,9 +15,17 @@ import java.util.ArrayList;
 public class AlbergueDAO {
 
     private ConexionBD conexion;
+    private static AlbergueDAO instancia;
+
+    public static AlbergueDAO getInstancia() {
+        if (instancia == null) {
+            instancia = new AlbergueDAO();
+        }
+        return instancia;
+    }
 
     public AlbergueDAO() {
-        this.conexion = new ConexionBD();
+        this.conexion =  ConexionBD.getInstancia();
         this.conexion.conectar();
     }
 
@@ -27,16 +35,17 @@ public class AlbergueDAO {
         return this.conexion.ejecutarUpdate(query);
     }
 
-    public ArrayList<AlbergueVO> getListaAlbergue(AlbergueVO objAlbergueVO) {
-        String query = "SELECT * FROM albergue WHERE RUTUSUARIO = '" + objAlbergueVO.getRutUsuario() + "'";
+    public ArrayList<AlbergueVO> getListaAlbergue(UsuarioVO objUsuarioVO) {
+        String query = "SELECT * FROM albergue WHERE RUTUSUARIO = '" + objUsuarioVO.getRut() + "'";
         ResultSet rs = this.conexion.ejecutarQuery(query);
 
         ArrayList<AlbergueVO> listaAlbergue = new ArrayList();
 
         try {
             while (rs.next()) {
+                AlbergueVO objAlbergueVO = new AlbergueVO();
                 objAlbergueVO.setIdAlbergue(rs.getInt("IDALBERGUE"));
-                objAlbergueVO.setNombre(rs.getString("NOMBRE"));
+                objAlbergueVO.setNombre(rs.getString("NOMBREALBERGUE"));
                 listaAlbergue.add(objAlbergueVO);
             }
         } catch (Exception e) {

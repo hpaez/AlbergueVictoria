@@ -14,6 +14,15 @@ import java.sql.*;
 public class ConexionBD {
     
     private Connection conexion;
+    private static ConexionBD  instancia;
+
+    
+    public static ConexionBD getInstancia(){
+        if (instancia == null) {
+            instancia = new ConexionBD();
+        }
+        return instancia;
+    }
     
     public ConexionBD(){
         

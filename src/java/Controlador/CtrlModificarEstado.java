@@ -5,12 +5,8 @@
  */
 package Controlador;
 
-import Datos.AlbergueVO;
-import Datos.UsuarioVO;
-import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DerKow
  */
-public class CtrlMostrarAlbergue extends HttpServlet {
+public class CtrlModificarEstado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,20 +31,16 @@ public class CtrlMostrarAlbergue extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            // Recuperación del dato digitado en página Jsp
-            // String rut = request.getParameter("rut");
-            
-            UsuarioVO usuariovo = new UsuarioVO();
-            usuariovo.setRut("191453360");
-            // Creación de clases de la capa de dominio de la cual se recuperará una lista con datos 
-            Usuario usuario = new Usuario();
-            
-            // Recuperación de datos desde clases java normales
-            ArrayList<AlbergueVO> lista = usuario.buscarAlbergue(usuariovo);
-            // Traspaso de lista hacia capa presentación, en forma de lista
-            request.setAttribute("lista", lista);
-            // Lanzamiento de página de respuesta de la búsqueda.
-            request.getRequestDispatcher("modificarEstado.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CtrlModificarEstado</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CtrlModificarEstado at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="CtrlEntrar.do" method="post">
+        <form action="CtrlMostrarAlbergue" method="post">
             <input type="submit" name="btnModificarEstado" value="Modificar Estado">
         </form>
     </body>

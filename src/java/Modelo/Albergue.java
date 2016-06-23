@@ -5,6 +5,11 @@
  */
 package Modelo;
 
+import Datos.AlbergueDAO;
+import Datos.AlbergueVO;
+import Datos.UsuarioVO;
+import java.util.ArrayList;
+
 /**
  *
  * @author DerKow
@@ -97,6 +102,11 @@ public class Albergue {
 
     public void setFono(String fono) {
         this.fono = fono;
+    }
+    
+    public ArrayList<AlbergueVO> buscarAlbergue(UsuarioVO objUsuarioVO){
+        AlbergueDAO alberguedao = AlbergueDAO.getInstancia();
+        return alberguedao.getListaAlbergue(objUsuarioVO);
     }
 
 }

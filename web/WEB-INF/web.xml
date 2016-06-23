@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>CtrlEntrar</servlet-name>
-        <servlet-class>Controlador.CtrlEntrar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CtrlMostrarAlbergue</servlet-name>
         <servlet-class>Controlador.CtrlMostrarAlbergue</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>CtrlEntrar</servlet-name>
-        <url-pattern>/CtrlEntrar.do</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>CtrlModificarEstado</servlet-name>
+        <servlet-class>Controlador.CtrlModificarEstado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlMostrarAlbergue</servlet-name>
-        <url-pattern>/CtrlMostrarAlbergue.do</url-pattern>
+        <url-pattern>/CtrlMostrarAlbergue</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlModificarEstado</servlet-name>
+        <url-pattern>/CtrlModificarEstado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
