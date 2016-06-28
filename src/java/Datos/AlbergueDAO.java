@@ -31,12 +31,11 @@ public class AlbergueDAO {
 
     public int actualizar(AlbergueVO objAlbergueVO) {
         String query = "UPDATE albergue SET ESTADOALBERGUE = '" + objAlbergueVO.getEstado() + "' WHERE IDALBERGUE = '" + objAlbergueVO.getIdAlbergue() + "'";
-        System.out.println(query);
         return this.conexion.ejecutarUpdate(query);
     }
 
     public ArrayList<AlbergueVO> getListaAlbergue(UsuarioVO objUsuarioVO) {
-        String query = "SELECT * FROM albergue WHERE RUTUSUARIO = '" + objUsuarioVO.getRut() + "'";
+        String query = "SELECT IDALBERGUE, NOMBREALBERGUE FROM albergue WHERE RUTUSUARIO = '" + objUsuarioVO.getRut() + "'";
         ResultSet rs = this.conexion.ejecutarQuery(query);
 
         ArrayList<AlbergueVO> listaAlbergue = new ArrayList();
@@ -52,5 +51,22 @@ public class AlbergueDAO {
             return listaAlbergue;
         }
         return listaAlbergue;
+    }
+    
+    public int getEstadoAlbergue(AlbergueVO objAlbergueVO) {
+        int estadoAlbergue = 2;
+        String query = "SELECT ESTADOALBERGUE FROM albergue WHERE IDALBERGUE ='" + objAlbergueVO.getIdAlbergue() + "'";
+        ResultSet rs = this.conexion.ejecutarQuery(query);
+        
+        
+        try {
+            while(rs.next()){
+                objAlbergueVO.setEstado(rs.getInt("ESTADOALBERGUE"));
+                estadoAlbergue = objAlbergueVO.getEstado();
+            }
+        } catch (Exception e){
+            return estadoAlbergue;
+        }
+        return estadoAlbergue;
     }
 }

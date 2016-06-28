@@ -108,5 +108,4 @@ public class Albergue {
         AlbergueDAO alberguedao = AlbergueDAO.getInstancia();
         return alberguedao.getListaAlbergue(objUsuarioVO);
     }
-
 }

@@ -5,8 +5,12 @@
  */
 package Controlador;
 
+import Datos.AlbergueDAO;
+import Datos.AlbergueVO;
+import Modelo.Albergue;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +35,31 @@ public class CtrlModificarEstado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            int estado;
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CtrlModificarEstado</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CtrlModificarEstado at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            // Recuperación del dato digitado en página Jsp
+            // String rut = request.getParameter("rut");
+            
+            AlbergueVO alberguevo = new AlbergueVO();
+            alberguevo.setIdAlbergue(Integer.parseInt(request.getParameter("albergue")));
+            // Creación de clases de la capa de dominio de la cual se recuperará una lista con datos 
+            AlbergueDAO alberguedao = new AlbergueDAO();
+            
+            // Recuperación de datos desde clases java normales
+            estado = alberguedao.getEstadoAlbergue(alberguevo);
+            // Traspaso de lista hacia capa presentación, en forma de lista
+            if(estado == 2){
+                
+            } else {
+                if(estado == 1){
+                    alberguevo.setEstado(0);
+                    System.out.println(alberguedao.actualizar(alberguevo));
+                } else {
+                    alberguevo.setEstado(1);
+                    
+                    System.out.println(alberguedao.actualizar(alberguevo));
+                }
+            }
         }
     }
 

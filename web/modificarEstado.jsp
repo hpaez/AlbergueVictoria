@@ -23,7 +23,7 @@
         <form action="CtrlModificarEstado" method="post">
             <legend>Datos de búsqueda</legend>
             Albergue:
-            <select id="sector" name="sector">
+            <select id="albergue" name="albergue">
                 <%  for (int i = 0; i < lista.size(); i++) {
                         int option = lista.get(i).getIdAlbergue();
                         String option2 = lista.get(i).getNombre();
