@@ -24,17 +24,18 @@
             <legend>Seleccionar Albergue</legend>
             Albergue:
             <select id="albergue" name="albergue">
+                <option value="0">Seleccionar Albergue</option>
                 <%  for (int i = 0; i < lista.size(); i++) {
                         int option = lista.get(i).getIdAlbergue();
                         String option2 = lista.get(i).getNombre();
                 %>
-                <option value="<%= option %>"><%= option2 %></option>
-                <% 
+                <option value="<%= option%>"><%= option2%></option>
+                <%
                     }
                 %>
             </select>
             <br><br/>
-            <input type="submit" name="btEntrar" value="Entrar">
+            <input type="submit" name="btEntrar" value="Modificar Estado">
         </form>
     </body>
 </html>

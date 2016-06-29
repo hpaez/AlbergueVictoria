@@ -36,28 +36,23 @@ public class CtrlModificarEstado extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int estado;
             String resultado;
-            /* TODO output your page here. You may use following sample code. */
-            // Recuperación del dato digitado en página Jsp
-            // String rut = request.getParameter("rut");
-            
+
             AlbergueVO alberguevo = new AlbergueVO();
             alberguevo.setIdAlbergue(Integer.parseInt(request.getParameter("albergue")));
-            // Creación de clases de la capa de dominio de la cual se recuperará una lista con datos 
+
             AlbergueDAO alberguedao = new AlbergueDAO();
-            
-            // Recuperación de datos desde clases java normales
+
             estado = alberguedao.getEstadoAlbergue(alberguevo);
-            // Traspaso de lista hacia capa presentación, en forma de lista
-            
-            if(estado == 1){
+
+            if (estado == 1) {
                 alberguevo.setEstado(0);
             } else {
                 alberguevo.setEstado(1);
             }
-            
+
             resultado = Integer.toString(alberguedao.actualizar(alberguevo));
             request.setAttribute("resultado", resultado);
-            
+
             request.getRequestDispatcher("modificarEstado.jsp").forward(request, response);
         }
     }

@@ -3,7 +3,7 @@
     Created on : 28-06-2016, 23:04:04
     Author     : DerKow
 --%>
-<% 
+<%
     String resultado = (String) request.getAttribute("resultado");
 %>
 
@@ -16,21 +16,21 @@
     </head>
     <body>
         <h1>Sistema de Búsqueda de Extraviado</h1>
-        
+
         <%
-        if(resultado.equals("1")){
+            if (resultado.equals("1")) {
         %>
         <p>El cambio de estado del albergue fue hecho con éxito</p>
-            <br><br>
-            <a href="index.jsp">Volver Atras</a>
+        <br><br>
+        <a href="index.jsp">Volver Atras</a>
         <%
         } else {
         %>
-            <p>No se pudo cambiar el estado del albergue</p>
-            <br><br>
-            <a href="CtrlMostrarAlbergue">Volver a Modificar Estado</a>
+        <p>No se pudo cambiar el estado del albergue</p>
+        <br><br>
+        <a href="CtrlMostrarAlbergue">Volver a Modificar Estado</a>
         <%
-        }
+            }
         %>
     </body>
 </html>

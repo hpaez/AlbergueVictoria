@@ -37,12 +37,12 @@ public class CtrlMostrarAlbergue extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             // Recuperación del dato digitado en página Jsp
             // String rut = request.getParameter("rut");
-            
+
             UsuarioVO usuariovo = new UsuarioVO();
             usuariovo.setRut("191453360");
             // Creación de clases de la capa de dominio de la cual se recuperará una lista con datos 
             Usuario usuario = new Usuario();
-            
+
             // Recuperación de datos desde clases java normales
             ArrayList<AlbergueVO> lista = usuario.buscarAlbergue(usuariovo);
             // Traspaso de lista hacia capa presentación, en forma de lista
