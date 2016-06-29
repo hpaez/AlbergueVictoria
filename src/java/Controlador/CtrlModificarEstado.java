@@ -7,10 +7,9 @@ package Controlador;
 
 import Datos.AlbergueDAO;
 import Datos.AlbergueVO;
-import Modelo.Albergue;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +35,7 @@ public class CtrlModificarEstado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int estado;
+            String resultado;
             /* TODO output your page here. You may use following sample code. */
             // Recuperación del dato digitado en página Jsp
             // String rut = request.getParameter("rut");
@@ -48,18 +48,17 @@ public class CtrlModificarEstado extends HttpServlet {
             // Recuperación de datos desde clases java normales
             estado = alberguedao.getEstadoAlbergue(alberguevo);
             // Traspaso de lista hacia capa presentación, en forma de lista
-            if(estado == 2){
-                
+            
+            if(estado == 1){
+                alberguevo.setEstado(0);
             } else {
-                if(estado == 1){
-                    alberguevo.setEstado(0);
-                    System.out.println(alberguedao.actualizar(alberguevo));
-                } else {
-                    alberguevo.setEstado(1);
-                    
-                    System.out.println(alberguedao.actualizar(alberguevo));
-                }
+                alberguevo.setEstado(1);
             }
+            
+            resultado = Integer.toString(alberguedao.actualizar(alberguevo));
+            request.setAttribute("resultado", resultado);
+            
+            request.getRequestDispatcher("modificarEstado.jsp").forward(request, response);
         }
     }
 

@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modificar Estado del Albergue - Sistema de Busqueda de Extraviado</title>
+        <title>Inicio - Sistema de Busqueda de Extraviado</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Sistema de Búsqueda de Extraviado</h1>
         <form action="CtrlMostrarAlbergue" method="post">
             <input type="submit" name="btnModificarEstado" value="Modificar Estado">
         </form>

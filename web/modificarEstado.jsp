@@ -1,15 +1,10 @@
 <%-- 
     Document   : modificarEstado
-    Created on : 22-06-2016, 12:14:39
+    Created on : 28-06-2016, 23:04:04
     Author     : DerKow
 --%>
-<%@page import="Datos.AlbergueVO"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.ArrayList"%>
-
-<%
-    ArrayList<AlbergueVO> lista = (ArrayList<AlbergueVO>) request.getAttribute("lista");
-    
+<% 
+    String resultado = (String) request.getAttribute("resultado");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,21 +15,22 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="CtrlModificarEstado" method="post">
-            <legend>Datos de búsqueda</legend>
-            Albergue:
-            <select id="albergue" name="albergue">
-                <%  for (int i = 0; i < lista.size(); i++) {
-                        int option = lista.get(i).getIdAlbergue();
-                        String option2 = lista.get(i).getNombre();
-                %>
-                <option value="<%= option %>"><%= option2 %></option>
-                <% 
-                    }
-                %>
-            </select>
-            <br><br/>
-            <input type="submit" name="btEntrar" value="Entrar">
-        </form>
+        <h1>Sistema de Búsqueda de Extraviado</h1>
+        
+        <%
+        if(resultado.equals("1")){
+        %>
+        <p>El cambio de estado del albergue fue hecho con éxito</p>
+            <br><br>
+            <a href="index.jsp">Volver Atras</a>
+        <%
+        } else {
+        %>
+            <p>No se pudo cambiar el estado del albergue</p>
+            <br><br>
+            <a href="CtrlMostrarAlbergue">Volver a Modificar Estado</a>
+        <%
+        }
+        %>
     </body>
 </html>

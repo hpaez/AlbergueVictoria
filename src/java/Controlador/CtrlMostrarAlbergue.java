@@ -48,7 +48,7 @@ public class CtrlMostrarAlbergue extends HttpServlet {
             // Traspaso de lista hacia capa presentación, en forma de lista
             request.setAttribute("lista", lista);
             // Lanzamiento de página de respuesta de la búsqueda.
-            request.getRequestDispatcher("modificarEstado.jsp").forward(request, response);
+            request.getRequestDispatcher("seleccionarEstado.jsp").forward(request, response);
         }
     }
 
